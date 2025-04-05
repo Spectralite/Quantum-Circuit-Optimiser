@@ -48,7 +48,7 @@ python optimizer.py --algorithm grover --optimization advanced --simulate
 ####  Basic Optimization
 The Basic Optimization pass identifies and reorders commutable gate sequences to improve circuit depth. This approach targets simple patterns such as CZ commuting with X, allowing for effective reordering without affecting logical equivalence.
 
-#### ⚙️ Advanced Optimization
+#### Advanced Optimization
 The Advanced Optimization pass leverages Qiskit's transpiler passes to further optimize the circuit:
 
 - **RemoveResetInZeroState**: Eliminates unnecessary resets on qubits already in the |0⟩ state.
