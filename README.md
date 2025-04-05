@@ -75,7 +75,7 @@ Original Simulation: {'00': 0.48, '11': 0.46, '01': 0.06}
 Optimized Simulation: {'00': 0.49, '11': 0.45, '01': 0.06}
 ```
 Internal Architecture
-The Quantum Circuit Optimizer uses *Directed Acyclic Graphs* (DAGs) to represent quantum circuits. This conversion, done via Qiskit's *circuit_to_dag* function, facilitates efficient manipulation and reordering of gates.
+The Quantum Circuit Optimizer uses **Directed Acyclic Graphs** (DAGs) to represent quantum circuits. This conversion, done via Qiskit's **circuit_to_dag** function, facilitates efficient manipulation and reordering of gates.
 
 The optimizer's internal process involves:
 
