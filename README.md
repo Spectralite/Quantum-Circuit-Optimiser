@@ -24,6 +24,7 @@ Ensure Python 3.8+ is installed, then run:
 
 ```bash
 pip install qiskit qiskit-aer
+```
 
 Usage
 Running the Optimizer
