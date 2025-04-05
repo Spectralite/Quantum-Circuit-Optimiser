@@ -34,43 +34,45 @@ You can run the quantum circuit optimizer from the command line interface (CLI) 
 ```bash
 python optimizer.py --algorithm grover --optimization advanced --simulate
 ```
-Command Line Arguments
-Argument	Description
---algorithm	Choose grover or shor algorithm
---optimization	Choose basic, advanced, or hardware optimization
---simulate	Simulate both original and optimized circuits
-Optimization Strategies
-Basic Optimization
+### Command Line Arguments
+
+| Argument         | Description                                                  |
+|------------------|--------------------------------------------------------------|
+| `--algorithm`    | Choose `grover` or `shor` algorithm                         |
+| `--optimization` | Choose `basic`, `advanced`, or `hardware` optimization       |
+| `--simulate`     | Simulate both original and optimized circuits                |
+
+
+### Optimization Strategies
+
+####  Basic Optimization
 The Basic Optimization pass identifies and reorders commutable gate sequences to improve circuit depth. This approach targets simple patterns such as CZ commuting with X, allowing for effective reordering without affecting logical equivalence.
 
-⚙️ Advanced Optimization
+#### ⚙️ Advanced Optimization
 The Advanced Optimization pass leverages Qiskit's transpiler passes to further optimize the circuit:
 
-RemoveResetInZeroState: Eliminates unnecessary resets on qubits already in the |0⟩ state.
+- **RemoveResetInZeroState**: Eliminates unnecessary resets on qubits already in the |0⟩ state.
+- **Optimize1qGatesDecomposition**: Combines sequences of one-qubit gates into a more efficient single operation.
+- **CommutativeCancellation**: Identifies and cancels pairs of gates that commute and nullify each other.
 
-Optimize1qGatesDecomposition: Combines sequences of one-qubit gates into a more efficient single operation.
-
-CommutativeCancellation: Identifies and cancels pairs of gates that commute and nullify each other.
-
-Hardware-Aware Optimization
+####  Hardware-Aware Optimization
 The Hardware-Aware Optimization pass tailors the circuit to fit specific hardware constraints. It maps the circuit onto a predefined coupling map, reducing swap operations by strategically inserting BasicSwap operations. An example coupling map used is:
 
-python
-Copy
+```python
 CouplingMap([[0, 1], [1, 2], [2, 3], [3, 4]])
 This ensures that operations are only applied to physically connected qubits, minimizing additional overhead.
 
-Simulation
-The optimizer allows you to simulate the circuit before and after optimization using Qiskit's qasm_simulator. This simulation helps verify that the optimized circuit maintains logical fidelity.
+### Simulation
+The optimizer allows you to simulate the circuit before and after optimization using Qiskit's `qasm_simulator`. This simulation helps verify that the optimized circuit maintains logical fidelity.
 
-Example Output
+#### Example Output
 ```yaml
 Original - Depth: 18, Gates: 35
 Optimized - Depth: 10, Gates: 21
 
 Original Simulation: {'00': 0.48, '11': 0.46, '01': 0.06}
 Optimized Simulation: {'00': 0.49, '11': 0.45, '01': 0.06}
-```
+
 Internal Architecture
 The Quantum Circuit Optimizer uses Directed Acyclic Graphs (DAGs) to represent quantum circuits. This conversion, done via Qiskit's circuit_to_dag function, facilitates efficient manipulation and reordering of gates.
 
