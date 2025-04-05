@@ -40,7 +40,6 @@ def circuit_to_dag_representation(circuit):
     return dag
 
 # Step 3: Basic Gate-Level Optimization
-# Step 3: Basic Gate-Level Optimization
 def commute_optimization(dag):
     def can_commute(node1, node2):
         # Check if both nodes are operation nodes
@@ -150,5 +149,3 @@ if __name__ == "__main__":
   import sys
   sys.argv = [sys.argv[0], '--algorithm', 'grover', '--optimization', 'advanced','simulate']
   main()
-
-
