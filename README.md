@@ -60,6 +60,7 @@ The Hardware-Aware Optimization pass tailors the circuit to fit specific hardwar
 
 ```python
 CouplingMap([[0, 1], [1, 2], [2, 3], [3, 4]])
+```
 This ensures that operations are only applied to physically connected qubits, minimizing additional overhead.
 
 ### Simulation
