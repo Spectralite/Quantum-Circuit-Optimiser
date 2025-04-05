@@ -25,23 +25,23 @@ Ensure Python 3.8+ is installed, then run:
 ```bash
 pip install qiskit qiskit-aer
 ```
+# Usage
 
-Usage
-Running the Optimizer
+## Running the Optimizer
+
 You can run the quantum circuit optimizer from the command line interface (CLI) with the following command:
 
-bash
-Copy
-Edit
+```bash
 python optimizer.py --algorithm grover --optimization advanced --simulate
+```
 Command Line Arguments
 Argument	Description
 --algorithm	Choose grover or shor algorithm
 --optimization	Choose basic, advanced, or hardware optimization
 --simulate	Simulate both original and optimized circuits
 Optimization Strategies
- Basic Optimization
-The Basic Optimization pass identifies and reorders commutable gate sequences to improve circuit depth. This approach targets simple patterns such as cz commuting with x, allowing for effective reordering without affecting logical equivalence.
+Basic Optimization
+The Basic Optimization pass identifies and reorders commutable gate sequences to improve circuit depth. This approach targets simple patterns such as CZ commuting with X, allowing for effective reordering without affecting logical equivalence.
 
 ⚙️ Advanced Optimization
 The Advanced Optimization pass leverages Qiskit's transpiler passes to further optimize the circuit:
@@ -52,53 +52,49 @@ Optimize1qGatesDecomposition: Combines sequences of one-qubit gates into a more 
 
 CommutativeCancellation: Identifies and cancels pairs of gates that commute and nullify each other.
 
- Hardware-Aware Optimization
+Hardware-Aware Optimization
 The Hardware-Aware Optimization pass tailors the circuit to fit specific hardware constraints. It maps the circuit onto a predefined coupling map, reducing swap operations by strategically inserting BasicSwap operations. An example coupling map used is:
 
 python
 Copy
-Edit
 CouplingMap([[0, 1], [1, 2], [2, 3], [3, 4]])
 This ensures that operations are only applied to physically connected qubits, minimizing additional overhead.
 
- Simulation
+Simulation
 The optimizer allows you to simulate the circuit before and after optimization using Qiskit's qasm_simulator. This simulation helps verify that the optimized circuit maintains logical fidelity.
 
 Example Output
-yaml
-Copy
-Edit
+```yaml
 Original - Depth: 18, Gates: 35
 Optimized - Depth: 10, Gates: 21
 
-Original Simulation:
-{'00': 0.48, '11': 0.46, '01': 0.06}
-
-Optimized Simulation:
-{'00': 0.49, '11': 0.45, '01': 0.06}
- Internal Architecture
+Original Simulation: {'00': 0.48, '11': 0.46, '01': 0.06}
+Optimized Simulation: {'00': 0.49, '11': 0.45, '01': 0.06}
+```
+Internal Architecture
 The Quantum Circuit Optimizer uses Directed Acyclic Graphs (DAGs) to represent quantum circuits. This conversion, done via Qiskit's circuit_to_dag function, facilitates efficient manipulation and reordering of gates.
 
 The optimizer's internal process involves:
 
-DAG Conversion: Converting the quantum circuit into a DAG for structural analysis.
+1. DAG Conversion: Converting the quantum circuit into a DAG for structural analysis.
 
-Gate-Level Optimization: Reordering and merging gates based on commutative properties.
+2. Gate-Level Optimization: Reordering and merging gates based on commutative properties.
 
-Advanced Optimization: Applying Qiskit transpiler passes to remove redundancies and simplify operations.
+3. Advanced Optimization: Applying Qiskit transpiler passes to remove redundancies and simplify operations.
 
-Hardware-Specific Optimization: Adapting the circuit layout based on a coupling map to minimize additional SWAP operations.
+4. Hardware-Specific Optimization: Adapting the circuit layout based on a coupling map to minimize additional SWAP operations.
 
-Simulation: Verifying that optimizations preserve the original circuit's logical behavior.
+5. Simulation: Verifying that optimizations preserve the original circuit's logical behavior.
 
- Included Algorithms
-Grover’s Algorithm
+Included Algorithms
+Grover's Algorithm
 A 2-qubit implementation demonstrating the core elements of Grover's search algorithm. The circuit employs Hadamard gates, controlled-Z (CZ) operations, and oracle inversions to illustrate how circuit depth can be reduced through optimization.
 
-Shor’s Algorithm (Toy Example)
-A simplified 3-qubit version of Shor’s algorithm, which includes Hadamard gates, CNOTs, and phase shift gates. This example highlights the benefits of optimizing entangled operations and control logic in a quantum circuit.
+Shor's Algorithm 
+A simplified 3-qubit version of Shor's algorithm, which includes Hadamard gates, CNOTs, and phase shift gates. This example highlights the benefits of optimizing entangled operations and control logic in a quantum circuit.
 
- Benchmarking
+Benchmarking
+---
 The optimizer reports the following metrics to evaluate its effectiveness:
 
 Circuit Depth: The maximum number of gate layers (time steps) in the circuit.
@@ -108,24 +104,12 @@ Gate Count: The total number of quantum gate operations.
 Output Distributions: Quasi-probability distributions from simulations to ensure logical consistency.
 
 Example benchmarking output:
+* yaml
+* Copy
+* riginal - Depth: 18, Gates: 35
+* Optimized - Depth: 10, Gates: 21
 
-yaml
-Copy
-Edit
-Original - Depth: 18, Gates: 35
-Optimized - Depth: 10, Gates: 21
- Future Work
-Potential future improvements include:
-
-Visualization: Developing tools to visually represent the DAGs and optimization process.
-
-Noise-Aware Optimization: Incorporating noise models to adapt the optimization to real hardware conditions.
-
-Machine Learning Integration: Using ML techniques to dynamically select the most effective optimization passes.
-
-Extended Algorithm Support: Adding more algorithms such as QFT, QPE, and VQE.
-
- References
+References
 Nielsen, M.A., & Chuang, I.L., Quantum Computation and Quantum Information, Cambridge University Press, 2010.
 
 Qiskit Documentation – https://qiskit.org/documentation
