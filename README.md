@@ -108,10 +108,10 @@ Gate Count: The total number of quantum gate operations.
 Output Distributions: Quasi-probability distributions from simulations to ensure logical consistency.
 
 Example benchmarking output:
-* yaml
-* Copy
-* riginal - Depth: 18, Gates: 35
-* Optimized - Depth: 10, Gates: 21
+```yaml
+Original - Depth: 18, Gates: 35
+Optimized - Depth: 10, Gates: 21
+```
 
 References
 Nielsen, M.A., & Chuang, I.L., Quantum Computation and Quantum Information, Cambridge University Press, 2010.
