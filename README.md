@@ -5,9 +5,7 @@
 The **Quantum Circuit Optimizer** is a Python-based tool built with [Qiskit](https://qiskit.org/) to optimize quantum circuits for performance and compatibility with real quantum hardware. It leverages multiple optimization techniques — from commutative gate reordering to hardware-specific transpilation — to reduce circuit depth and gate count while preserving output fidelity.
 
 This project includes implementations of **Grover’s** and **Shor’s** algorithms and demonstrates how optimization strategies can significantly improve execution efficiency on NISQ-era devices.
-
 ---
-
 ##  Features
 
 -  Supports Grover’s and Shor’s algorithm circuits  
@@ -113,7 +111,8 @@ Original - Depth: 18, Gates: 35
 Optimized - Depth: 10, Gates: 21
 ```
 
-References
-Nielsen, M.A., & Chuang, I.L., Quantum Computation and Quantum Information, Cambridge University Press, 2010.
+<ins>References</ins>
 
-Qiskit Documentation – https://qiskit.org/documentation
+* Nielsen, M.A., & Chuang, I.L., Quantum Computation and Quantum Information, Cambridge University Press, 2010.
+
+* Qiskit Documentation – https://qiskit.org/documentation
