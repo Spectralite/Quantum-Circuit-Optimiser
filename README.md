@@ -27,7 +27,7 @@ pip install qiskit qiskit-aer
 
 ## Running the Optimizer
 
-You can run the quantum circuit optimizer from the command line interface (CLI) with the following command:
+You can run the quantum circuit optimizer from the command line interface with the following command:
 
 ```bash
 python optimizer.py --algorithm grover --optimization advanced --simulate
@@ -88,11 +88,10 @@ The optimizer's internal process involves:
 
 5. Simulation: Verifying that optimizations preserve the original circuit's logical behavior.
 
-Included Algorithms
-Grover's Algorithm
-A 2-qubit implementation demonstrating the core elements of Grover's search algorithm. The circuit employs Hadamard gates, controlled-Z (CZ) operations, and oracle inversions to illustrate how circuit depth can be reduced through optimization.
+### Included Algorithms
+* Grover's Algorithm A 2-qubit implementation demonstrating the core elements of Grover's search algorithm. The circuit employs Hadamard gates, controlled-Z (CZ) operations, and oracle inversions to illustrate how circuit depth can be reduced through optimization.
 
-Shor's Algorithm 
+* Shor's Algorithm 
 A simplified 3-qubit version of Shor's algorithm, which includes Hadamard gates, CNOTs, and phase shift gates. This example highlights the benefits of optimizing entangled operations and control logic in a quantum circuit.
 
 Benchmarking
