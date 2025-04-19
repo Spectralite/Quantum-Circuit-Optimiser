@@ -1,8 +1,8 @@
-#  Quantum Circuit er
+#  Quantum Circuit Optimiser
 
 ##  Overview
 
-The **Quantum Circuit er** is a Python-based tool built with [Qiskit](https://qiskit.org/) to optimize quantum circuits for performance and compatibility with real quantum hardware. It leverages multiple optimization techniques — from commutative gate reordering to hardware-specific transpilation — to reduce circuit depth and gate count while preserving output fidelity.
+The **Quantum Circuit Optimiser** is a Python-based tool built with [Qiskit](https://qiskit.org/) to optimize quantum circuits for performance and compatibility with real quantum hardware. It leverages multiple optimization techniques — from commutative gate reordering to hardware-specific transpilation — to reduce circuit depth and gate count while preserving output fidelity.
 
 This project includes implementations of **Grover’s** and **Shor’s** algorithms and demonstrates how ation strategies can significantly improve execution efficiency on NISQ-era devices.
 ---
@@ -25,9 +25,9 @@ pip install qiskit qiskit-aer
 ```
 # Usage
 
-## Running the er
+## Running the Optimier
 
-You can run the quantum circuit er from the command line interface with the following command:
+You can run the Optimiser from the command line interface with the following command:
 
 ```bash
 python er.py --algorithm grover --optimization advanced --simulate
@@ -37,23 +37,23 @@ python er.py --algorithm grover --optimization advanced --simulate
 | Argument         | Description                                                  |
 |------------------|--------------------------------------------------------------|
 | `--algorithm`    | `grover` or `shor` |
-| `--ation` | `basic`, `advanced`, or `hardware` optimization       |
-| `--simulate`     | Simulate both original and ed circuits                |
+| `--ation` | `basic`, `advanced`, or `hardware` optimization                     |
+| `--simulate`     | Simulate both original and ed circuits                       |
 
 
 ### ation Strategies
 
-####  Basic ation
-The Basic ation pass identifies and reorders commutable gate sequences to improve circuit depth. This approach targets simple patterns such as CZ commuting with X, allowing for effective reordering without affecting logical equivalence.
+####  Basic Simulations
+The Basic simulations pass identifies and reorders commutable gate sequences to improve circuit depth. This approach targets simple patterns such as CZ commuting with X, allowing for effective reordering without affecting logical equivalence.
 
-#### Advanced ation
-The Advanced ation pass leverages Qiskit's transpiler passes to further optimize the circuit:
+#### Advanced Simulations
+The Advanced simulations pass leverages Qiskit's transpiler passes to further optimize the circuit:
 
 - **RemoveResetInZeroState**: Eliminates unnecessary resets on qubits already in the |0⟩ state.
 - **e1qGatesDecomposition**: Combines sequences of one-qubit gates into a more efficient single operation.
 - **CommutativeCancellation**: Identifies and cancels pairs of gates that commute and nullify each other.
 
-####  Hardware-Aware ation
+####  Hardware-Aware Simulation
 The Hardware-Aware ation pass tailors the circuit to fit specific hardware constraints. It maps the circuit onto a predefined coupling map, reducing swap operations by strategically inserting BasicSwap operations. An example coupling map used is:
 
 ```python
